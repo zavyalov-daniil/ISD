@@ -6,6 +6,7 @@ public interface INote {
     public void setNoteName(String newNoteName);
     public String getNoteName(String noteName);
 
+    /*Предполагается, что каждый абзац текста представлен отдельным экземпляром String*/
     public void setText(List<String> text);
     public List<String> getText();
 
@@ -16,8 +17,8 @@ public interface INote {
 
     public List<Object> getTagsList();
     public void addTag(Object newTag);
-    public void deleteTag(Object newTag);
-    public void deleteTag(String tagName);
+    public void deleteTag(Object newTag);//Удаление с помощью переопределённого equal
+    public void deleteTag(String tagName);//Удаление через поиск тега по названию
 
     /* Не уверен, что это необходимо
     Данные по типу Дата создания/изменения, etc
