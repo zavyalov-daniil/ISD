@@ -7,6 +7,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Arrays;
+import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
@@ -33,17 +34,22 @@ public class SimpleUserRegistrationService implements ISimpleUserRegistrationSer
         return salt;
     }
 
+    /**
+     * encode string password using PBKDF2WithHmacSHA1
+     * encode byte[] password into base64
+     */
     @Override
     public String encryptPassword(String pass) {
         try {
             byte[] encryptedPass = getEncryptedPassword(pass, salt);
-            return encryptedPass.toString();
+            return Base64.getEncoder().encodeToString(encryptedPass);
         } catch (NoSuchAlgorithmException ex) {
             //TODO: exceptions handling
         } catch (InvalidKeySpecException ex) {
             //TODO: exceptions handling
         } catch (Exception ex) {
         }
+        return null;
     }
 
 
@@ -73,5 +79,13 @@ public class SimpleUserRegistrationService implements ISimpleUserRegistrationSer
         SecretKeyFactory f = SecretKeyFactory.getInstance(algorithm);
 
         return f.generateSecret(spec).getEncoded();
+    }
+
+    /**
+     * encode byte[] salt into base64
+     */
+    public String getSalt() {
+        String res = Base64.getEncoder().encodeToString(salt);
+        return res;
     }
 }
