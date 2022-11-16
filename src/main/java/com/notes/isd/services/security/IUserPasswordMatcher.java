@@ -1,5 +1,5 @@
-package com.notes.isd.service.security;
+package com.notes.isd.services.security;
 
-public interface IUserAuthenticationService {
+public interface IUserPasswordMatcher {
     public boolean matchPasswords(String incomingPassword, String savedPassword) throws Exception;
 }

@@ -1,4 +1,4 @@
-package com.notes.isd.service.security;
+package com.notes.isd.services.security;
 
 import org.springframework.stereotype.Service;
 
@@ -6,17 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
-import java.util.Arrays;
 import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 @Service
-public class SimpleUserRegistrationService implements ISimpleUserRegistrationService {
+public class SimplePasswordsEncoder implements ISimplePasswordsEncoder {
 
     private byte[] salt;
 
-    public SimpleUserRegistrationService() {
+    public SimplePasswordsEncoder() {
         try {
             this.salt = generateSalt();
         } catch (Exception ex) {

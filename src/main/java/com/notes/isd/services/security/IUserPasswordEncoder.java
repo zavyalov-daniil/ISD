@@ -1,6 +1,6 @@
-package com.notes.isd.service.security;
+package com.notes.isd.services.security;
 
-public interface IUserRegistrationService {
+public interface IUserPasswordEncoder {
 
     //Зашифровать пароль
     public String encryptPassword(String pass);

@@ -1,8 +1,8 @@
-package com.notes.isd.service.security;
+package com.notes.isd.services.security;
 
 import java.security.NoSuchAlgorithmException;
 
 //PBKDF2
-public interface ISimpleUserRegistrationService extends IUserRegistrationService {
+public interface ISimplePasswordsEncoder extends IUserPasswordEncoder {
     public byte[] generateSalt() throws NoSuchAlgorithmException;
 }
