@@ -9,8 +9,11 @@ import java.util.List;
 
 @Service
 public class UserAccountService {
-    @Autowired
     UserAccountRepository userAccountRepository;
+
+    public UserAccountService(UserAccountRepository userAccountRepository) {
+        this.userAccountRepository = userAccountRepository;
+    }
 
     public List<UserAccount> getAll(){
         return userAccountRepository.findAll();

@@ -11,8 +11,11 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-    @Autowired
     private UserAccountService userAccountService;
+
+    public IndexController(UserAccountService userAccountService) {
+        this.userAccountService = userAccountService;
+    }
 
     @GetMapping("/")
     public String getAll(Model model) {
