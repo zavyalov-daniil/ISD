@@ -1,4 +1,4 @@
-package com.notes.isd.service.security;
+package com.notes.isd.services.security;
 
 import org.springframework.stereotype.Service;
 
@@ -11,11 +11,11 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 @Service
-public class SimpleAuthenticationService implements ISimpleAuthenticationService {
+public class SimplePasswordsMatcher implements ISimplePasswordsMatcher {
 
     private byte[] salt;
 
-    public SimpleAuthenticationService() {
+    public SimplePasswordsMatcher() {
 
     }
 
