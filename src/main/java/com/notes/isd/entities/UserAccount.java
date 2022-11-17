@@ -1,17 +1,21 @@
 package com.notes.isd.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.EnumSet;
+import java.util.Set;
+import com.notes.isd.entities.Role;
 
 @Entity
+@Table(name = "user_account")
 public class UserAccount {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-
     private String login;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public UserAccount() {
     }
@@ -34,5 +38,13 @@ public class UserAccount {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
