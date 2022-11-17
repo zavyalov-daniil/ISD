@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <meta charset="UTF-8">
   <title>Notes</title>
@@ -27,18 +28,12 @@
 <br>
 <h2>Account list</h2>
 <table border="1px">
-  <tr>
-    <td>Id</td>
-    <td>Login</td>
-    <td>Delete from list</td>
+  <tr th:each="user : ${usersList}">
+    <td><span th:text="${user.id}"> Id </span></td>
+    <td><span th:text="${user.login}"> Login </span></td>
+    <!--<td><a href="${'/delete/'+user.id}">Delete</a></td>-->
   </tr>
-  <#list usersList as user>
-  <tr>
-    <td>${user.id}</td>
-    <td>${user.login}</td>
-    <td><a href="${'/delete/'+user.id}">Delete</a></td>
-  </tr>
-  </#list>
 </table>
+<a href="/main">Main page</a>
 </body>
 </html>

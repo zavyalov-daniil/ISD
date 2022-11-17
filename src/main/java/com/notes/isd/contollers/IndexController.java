@@ -2,7 +2,6 @@ package com.notes.isd.contollers;
 
 import com.notes.isd.entities.UserAccount;
 import com.notes.isd.services.UserAccountService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +29,7 @@ public class IndexController {
     }
 
     @PostMapping("/add")
-    public String addTask(@ModelAttribute UserAccount user) {
+    public String addUser(@ModelAttribute UserAccount user) {
         userAccountService.save(user);
         return "redirect:/";
     }
