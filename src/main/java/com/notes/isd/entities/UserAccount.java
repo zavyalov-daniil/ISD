@@ -8,18 +8,15 @@ import com.notes.isd.entities.Role;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "user_account")
+@Table(name = "users")
 public class UserAccount {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotEmpty(message = "Login should not be empty")
-    @Size(min = 5, max = 30, message = "Login should be between 5 and 30 characters")
+    @Column(nullable = false, unique = true, length = 45)
     private String login;
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+    @Column(nullable = false, length = 64)
+    private String encryptedPassword;
 
     public UserAccount() {
     }
@@ -44,11 +41,11 @@ public class UserAccount {
         this.login = login;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
     }
 }
