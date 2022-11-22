@@ -1,23 +1,21 @@
 package com.notes.isd.contollers;
 
-import com.notes.isd.entities.UserAccount;
 import com.notes.isd.services.UserAccountService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class MainController {
+@RequestMapping("/Notes")
+public class NotesController {
     private UserAccountService userAccountService;
 
-    public MainController(UserAccountService userAccountService) {
+    public NotesController(UserAccountService userAccountService) {
         this.userAccountService = userAccountService;
     }
 
-    @GetMapping("/main")
-    public String getAll() {
-        return "main";
+    @GetMapping()
+    public String getAllNotes() {
+        return "notes";
     }
 }

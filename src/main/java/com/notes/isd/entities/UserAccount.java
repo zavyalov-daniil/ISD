@@ -1,9 +1,11 @@
 package com.notes.isd.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.EnumSet;
 import java.util.Set;
 import com.notes.isd.entities.Role;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "user_account")
@@ -11,6 +13,8 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+    @NotEmpty(message = "Login should not be empty")
+    @Size(min = 5, max = 30, message = "Login should be between 5 and 30 characters")
     private String login;
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

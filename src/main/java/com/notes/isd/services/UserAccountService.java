@@ -26,4 +26,5 @@ public class UserAccountService {
     public void delete(Integer id) {
         userAccountRepository.deleteById(id);
     }
+
 }

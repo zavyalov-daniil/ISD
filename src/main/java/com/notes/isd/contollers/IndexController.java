@@ -10,13 +10,8 @@ import java.util.List;
 
 @Controller
 public class IndexController {
-    private UserAccountService userAccountService;
 
-    public IndexController(UserAccountService userAccountService) {
-        this.userAccountService = userAccountService;
-    }
-
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String getAll(Model model) {
         List<UserAccount> usersList = userAccountService.getAll();
         model.addAttribute("usersList", usersList);
@@ -32,5 +27,9 @@ public class IndexController {
     public String addUser(@ModelAttribute UserAccount user) {
         userAccountService.save(user);
         return "redirect:/";
+    }*/
+    @GetMapping("/")
+    public String getMainPage() {
+        return "index";
     }
 }
