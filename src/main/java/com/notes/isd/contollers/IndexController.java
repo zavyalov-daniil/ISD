@@ -2,7 +2,6 @@ package com.notes.isd.contollers;
 
 import com.notes.isd.entities.UserAccount;
 import com.notes.isd.repositories.UserAccountRepository;
-import com.notes.isd.services.UserAccountService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,23 +17,6 @@ public class IndexController {
         this.repos = repos;
     }
 
-    /*@GetMapping("/")
-    public String getAll(Model model) {
-        List<UserAccount> usersList = userAccountService.getAll();
-        model.addAttribute("usersList", usersList);
-        return "index";
-    }
-    @RequestMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Integer id) {
-        userAccountService.delete(id);
-        return "redirect:/";
-    }
-
-    @PostMapping("/add")
-    public String addUser(@ModelAttribute UserAccount user) {
-        userAccountService.save(user);
-        return "redirect:/";
-    }*/
     @GetMapping("/")
     public String getMainPage() {
         return "index";
