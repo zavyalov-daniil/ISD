@@ -1,11 +1,6 @@
 package com.notes.isd.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
-import java.util.EnumSet;
-import java.util.Set;
-import com.notes.isd.entities.Role;
-import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
