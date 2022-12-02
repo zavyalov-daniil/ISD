@@ -29,6 +29,7 @@ public class BasicErrorController extends AbstractErrorController {
         super(errorAttributes, errorViewResolvers);
     }
 
+    @RequestMapping
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
         HttpStatus status = this.getStatus(request);
         if (status == HttpStatus.NO_CONTENT) {
