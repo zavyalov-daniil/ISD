@@ -12,6 +12,8 @@ public class Note {
     private String title;
     @Column(nullable = false)
     private String text;
+    @Column(nullable = false)
+    private Integer userId;
 
     public Integer getId() {
         return id;
@@ -35,5 +37,14 @@ public class Note {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        //Exception если пользователь не найден
+        this.userId = userId;
     }
 }
