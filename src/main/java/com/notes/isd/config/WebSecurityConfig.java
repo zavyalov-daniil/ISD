@@ -17,12 +17,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
     private DataSource dataSource;
+    private UserDetailsService userDetailsService;
+    public WebSecurityConfig(DataSource dataSource, UserDetailsService userDetailsService){
+        this.dataSource=dataSource;
+        this.userDetailsService=userDetailsService;
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new AppUserDetailsService();
+        return userDetailsService;
     }
 
     @Bean
