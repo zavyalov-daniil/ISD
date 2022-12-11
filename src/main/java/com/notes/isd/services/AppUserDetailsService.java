@@ -13,11 +13,9 @@ import java.util.List;
 @Service
 public class AppUserDetailsService implements UserDetailsService {
     private UserAccountRepository repos;
-    private ICurrentUserDetailsFacade currentUserDetailsFacade;
 
-    public AppUserDetailsService(UserAccountRepository repos, ICurrentUserDetailsFacade currentUserDetailsFacade) {
+    public AppUserDetailsService(UserAccountRepository repos) {
         this.repos = repos;
-        this.currentUserDetailsFacade = currentUserDetailsFacade;
     }
 
     @Override
