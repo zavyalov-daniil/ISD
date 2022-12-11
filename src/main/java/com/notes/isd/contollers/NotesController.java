@@ -1,8 +1,7 @@
 package com.notes.isd.contollers;
 
 import com.notes.isd.entities.Note;
-import com.notes.isd.repositories.NotesRepository;
-import com.notes.isd.services.ICurrentUserDetailsFacade;
+import com.notes.isd.models.NoteModel;
 import com.notes.isd.services.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,15 +20,15 @@ public class NotesController {
 
     @GetMapping()
     public String getNotes(Model model) {
-        model.addAttribute("new_note", new Note());
-        List<Note> notesList = noteService.findAllUserNotes();
+        model.addAttribute("new_note", new NoteModel());
+        List<NoteModel> notesList = noteService.findAllUserNotes();
         model.addAttribute("notesList", notesList);
         return "notes";
     }
 
     @PostMapping()
-    public String addNote(@ModelAttribute Note note) {
-        noteService.saveNote(note);
+    public String addNote(@ModelAttribute NoteModel NoteModel) {
+        noteService.saveNote(NoteModel);
         return "redirect:/notes";
     }
 
