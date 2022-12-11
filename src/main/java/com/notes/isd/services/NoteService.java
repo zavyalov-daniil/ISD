@@ -3,6 +3,7 @@ package com.notes.isd.services;
 import com.notes.isd.entities.Note;
 import com.notes.isd.models.NoteModel;
 import com.notes.isd.repositories.NotesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,9 +23,13 @@ public class NoteService {
         List<Note> noteList = repos.findAllUserNotes(currentUserDetailsFacade.getUserDetails().getUserId());
         List<NoteModel> noteModelList = new ArrayList<>();
         for (Note note:noteList) {
-            noteModelList.add(new NoteModel(note.getId(), note.getTitle(), note.getText()));
+            noteModelList.add(noteEntityToModel(note));
         }
         return noteModelList;
+    }
+
+    public NoteModel noteEntityToModel(Note note) {
+        return new NoteModel(note.getId(), note.getTitle(), note.getText());
     }
     public void saveNote(NoteModel noteModel) {
         Integer userId = currentUserDetailsFacade.getUserDetails().getUserId();

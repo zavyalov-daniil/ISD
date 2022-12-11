@@ -20,7 +20,7 @@ public class NotesController {
 
     @GetMapping()
     public String getNotes(Model model) {
-        model.addAttribute("new_note", new NoteModel());
+        model.addAttribute("new_note", new NoteModel()); //Правильно ли вручную создавать объект?
         List<NoteModel> notesList = noteService.findAllUserNotes();
         model.addAttribute("notesList", notesList);
         return "notes";
