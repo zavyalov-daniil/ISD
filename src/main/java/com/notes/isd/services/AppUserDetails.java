@@ -49,4 +49,8 @@ public class AppUserDetails implements UserDetails {
         return true;
     }
 
+    public Integer getUserId(){
+        return user.getId();
+    }
+
 }
