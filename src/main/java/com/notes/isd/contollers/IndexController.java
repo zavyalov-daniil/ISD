@@ -1,6 +1,7 @@
 package com.notes.isd.contollers;
 
 import com.notes.isd.entities.UserAccount;
+import com.notes.isd.forms.UserForm;
 import com.notes.isd.services.AppUserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +23,13 @@ public class IndexController {
     }
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new UserAccount());
+        model.addAttribute("user", new UserForm());
 
         return "registration";
     }
 
     @PostMapping("/process_register")
-    public String processRegister(UserAccount user) {
+    public String processRegister(UserForm user) {
         appUserDetailsService.registerNewUser(user);
         return "successful_registration";
     }

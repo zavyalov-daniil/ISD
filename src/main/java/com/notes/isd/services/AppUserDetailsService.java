@@ -1,6 +1,7 @@
 package com.notes.isd.services;
 
 import com.notes.isd.entities.UserAccount;
+import com.notes.isd.forms.UserForm;
 import com.notes.isd.repositories.UserAccountRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -31,9 +32,11 @@ public class AppUserDetailsService implements UserDetailsService {
         return repos.findAll();
     }
 
-    public void registerNewUser(UserAccount user){
+    public void registerNewUser(UserForm userForm){
+        UserAccount user = new UserAccount();
+        user.setLogin(userForm.getLogin());
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String encodedPassword = passwordEncoder.encode(user.getEncryptedPassword());
+        String encodedPassword = passwordEncoder.encode(userForm.getPassword());
         user.setEncryptedPassword(encodedPassword);
 
         repos.save(user);

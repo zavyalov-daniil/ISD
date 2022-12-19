@@ -1,9 +1,9 @@
 package com.notes.isd.services;
 
 import com.notes.isd.entities.Note;
-import com.notes.isd.models.NoteModel;
+import com.notes.isd.forms.NoteForm;
+import com.notes.isd.views.NoteView;
 import com.notes.isd.repositories.NotesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,23 +19,23 @@ public class NoteService {
         this.currentUserDetailsFacade = currentUserDetailsFacade;
     }
 
-    public List<NoteModel> findAllUserNotes() {
+    public List<NoteView> findAllUserNotes() {
         List<Note> noteList = repos.findAllUserNotes(currentUserDetailsFacade.getUserDetails().getUserId());
-        List<NoteModel> noteModelList = new ArrayList<>();
+        List<NoteView> noteViewList = new ArrayList<>();
         for (Note note:noteList) {
-            noteModelList.add(noteEntityToModel(note));
+            noteViewList.add(noteEntityToView(note));
         }
-        return noteModelList;
+        return noteViewList;
     }
 
-    public NoteModel noteEntityToModel(Note note) {
-        return new NoteModel(note.getId(), note.getTitle(), note.getText());
+    public NoteView noteEntityToView(Note note) {
+        return new NoteView(note.getId(), note.getTitle(), note.getText());
     }
-    public void saveNote(NoteModel noteModel) {
+    public void saveNote(NoteForm noteForm) {
         Integer userId = currentUserDetailsFacade.getUserDetails().getUserId();
         Note note = new Note();
-        note.setText(noteModel.getText());
-        note.setTitle(noteModel.getTitle());
+        note.setText(noteForm.getText());
+        note.setTitle(noteForm.getTitle());
         note.setUserId(userId);
         repos.save(note);
     }

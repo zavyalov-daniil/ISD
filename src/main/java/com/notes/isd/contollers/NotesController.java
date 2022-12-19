@@ -1,7 +1,7 @@
 package com.notes.isd.contollers;
 
-import com.notes.isd.entities.Note;
-import com.notes.isd.models.NoteModel;
+import com.notes.isd.forms.NoteForm;
+import com.notes.isd.views.NoteView;
 import com.notes.isd.services.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,15 +20,15 @@ public class NotesController {
 
     @GetMapping()
     public String getNotes(Model model) {
-        model.addAttribute("new_note", new NoteModel()); //Правильно ли вручную создавать объект?
-        List<NoteModel> notesList = noteService.findAllUserNotes();
+        model.addAttribute("new_note", new NoteView());
+        List<NoteView> notesList = noteService.findAllUserNotes();
         model.addAttribute("notesList", notesList);
         return "notes";
     }
 
     @PostMapping()
-    public String addNote(@ModelAttribute NoteModel NoteModel) {
-        noteService.saveNote(NoteModel);
+    public String addNote(@ModelAttribute NoteForm noteForm) {
+        noteService.saveNote(noteForm);
         return "redirect:/notes";
     }
 
