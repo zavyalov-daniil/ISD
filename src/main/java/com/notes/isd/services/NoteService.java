@@ -29,7 +29,7 @@ public class NoteService {
     }
 
     public NoteView noteEntityToView(Note note) {
-        return new NoteView(note.getId(), note.getTitle(), note.getText());
+        return new NoteView(note.getId(), note.getTitle(), note.getText(), note.getDate());
     }
     public void saveNote(NoteForm noteForm) {
         Integer userId = currentUserDetailsFacade.getUserDetails().getUserId();
@@ -37,6 +37,7 @@ public class NoteService {
         note.setText(noteForm.getText());
         note.setTitle(noteForm.getTitle());
         note.setUserId(userId);
+        note.setDate(noteForm.getDate());
         repos.save(note);
     }
     public void deleteNoteById(Integer id) {

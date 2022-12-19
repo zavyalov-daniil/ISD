@@ -1,6 +1,7 @@
 package com.notes.isd.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "notes")
@@ -14,6 +15,8 @@ public class Note {
     private String text;
     @Column(nullable = false)
     private Integer userId;
+    @Column(nullable = false)
+    private Date date;
 
     public Integer getId() {
         return id;
@@ -41,6 +44,14 @@ public class Note {
 
     public Integer getUserId() {
         return userId;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public void setUserId(Integer userId) {
