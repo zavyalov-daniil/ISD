@@ -1,10 +1,13 @@
 package com.notes.isd.forms;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class NoteForm {
     private String title;
     private String text;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     public NoteForm(){}
     public NoteForm(String title, String text, Date date) {

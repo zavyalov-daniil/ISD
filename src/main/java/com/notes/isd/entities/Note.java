@@ -1,5 +1,7 @@
 package com.notes.isd.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -15,6 +17,7 @@ public class Note {
     private String text;
     @Column(nullable = false)
     private Integer userId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     private Date date;
 

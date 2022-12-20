@@ -1,11 +1,14 @@
 package com.notes.isd.views;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class NoteView {
     private Integer id;
     private String title;
     private String text;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     public NoteView(){}
     public NoteView(Integer id, String title, String text, Date date) {
