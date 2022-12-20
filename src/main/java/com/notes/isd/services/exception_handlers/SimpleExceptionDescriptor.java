@@ -1,8 +1,11 @@
 package com.notes.isd.services.exception_handlers;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class SimpleExceptionDescriptor implements ExceptionDescriptor {
 
     private Map<String, String> descriptionLines;
