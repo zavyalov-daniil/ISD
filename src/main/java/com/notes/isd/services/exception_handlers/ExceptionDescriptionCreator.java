@@ -6,14 +6,15 @@ public class ExceptionDescriptionCreator {
     private Map<Class, ExceptionToken> classification;
     private ExceptionDescriptor descriptor;
 
-    private final Exception ex;
+//    private final Exception ex;
 
-    public ExceptionDescriptionCreator(Map<Class, ExceptionToken> classification, Exception ex) {
+    public ExceptionDescriptionCreator(Map<Class, ExceptionToken> classification) {
         this.descriptor = new SimpleExceptionDescriptor();
-        this.ex = ex;
+        this.classification = classification;
+//        this.ex = ex;
     }
 
-    public String getExceptionDescription() {
+    public String getExceptionDescription(Exception ex) {
         ExceptionToken token = new ExceptionToken("500", "unhandled error");
 
         for (Class cl : classification.keySet()) {
@@ -29,9 +30,9 @@ public class ExceptionDescriptionCreator {
         return descriptor.toString();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        return sb.toString();
-    }
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        return sb.toString();
+//    }
 }
