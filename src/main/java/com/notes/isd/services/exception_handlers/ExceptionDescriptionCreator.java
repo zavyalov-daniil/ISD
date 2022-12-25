@@ -15,7 +15,7 @@ public class ExceptionDescriptionCreator {
     }
 
     public String getExceptionDescription(Exception ex) {
-        ExceptionToken token = new ExceptionToken("500", "unhandled error");
+        ExceptionToken token = new ExceptionToken("500", /*"unhandled error. You missed:" +*/ ex.toString());
 
         for (Class cl : classification.keySet()) {
             if (cl.equals(ex.getClass())) {
