@@ -1,6 +1,7 @@
 package com.notes.isd.contollers;
 
 import com.notes.isd.entities.UserAccount;
+import com.notes.isd.services.CurrentExceptionKeeper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.AbstractErrorController;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorViewResolver;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +44,10 @@ public class BasicErrorController extends AbstractErrorController {
                             .including(ErrorAttributeOptions.Include.EXCEPTION)
                             .including(ErrorAttributeOptions.Include.MESSAGE);
 //                            .including(ErrorAttributeOptions.Include.STACK_TRACE);
-            Map<String, Object> body = this.getErrorAttributes(request, options);
+            Map<String, String> body = new HashMap<String, String>();/* this.getErrorAttributes(request, options);*/
+            String description = CurrentExceptionKeeper.getDescription();
+            body.put("Error", description);
+
             return new ResponseEntity(body, status);
         }
     }
