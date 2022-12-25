@@ -46,8 +46,8 @@ public class BasicErrorController extends AbstractErrorController {
 //                            .including(ErrorAttributeOptions.Include.STACK_TRACE);
             Map<String, String> body = new HashMap<String, String>();/* this.getErrorAttributes(request, options);*/
             String description = CurrentExceptionKeeper.getDescription();
-            body.put("", description);
-            
+            body.put("Error", description);
+
             return new ResponseEntity(body, status);
         }
     }
