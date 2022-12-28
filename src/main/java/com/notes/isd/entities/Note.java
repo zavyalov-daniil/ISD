@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,10 +24,13 @@ public class Note {
     private Date date;
     @ManyToMany
     @JoinTable(
-            name = "tags",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+            name = "tags_notes",
+            joinColumns = @JoinColumn(name = "note_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     Set<Tag> noteTags;
+    public Note(){
+        noteTags = new HashSet<Tag>();
+    }
     public Integer getId() {
         return id;
     }
@@ -66,5 +70,17 @@ public class Note {
     public void setUserId(Integer userId) {
         //Exception если пользователь не найден
         this.userId = userId;
+    }
+
+    public Set<Tag> getNoteTags() {
+        return noteTags;
+    }
+
+    public void setNoteTags(Set<Tag> noteTags) {
+        this.noteTags = noteTags;
+    }
+
+    public void addTagToSet(Tag tag){
+        noteTags.add(tag);
     }
 }

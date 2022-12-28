@@ -9,6 +9,8 @@ public class TagForm {
         this.noteId = noteId;
     }
 
+    public TagForm() {}
+
     public String getTitle() {
         return title;
     }

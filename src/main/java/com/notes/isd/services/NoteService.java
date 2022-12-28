@@ -34,7 +34,13 @@ public class NoteService {
     }
 
     public NoteView noteEntityToView(Note note) {
-        return new NoteView(note.getId(), note.getTitle(), note.getText(), note.getDate());
+        List<Tag> tags = tagRepos.findAllNoteTags(note.getId());
+        String tagsTitles = "";
+//        List<String> tagsTitles = new ArrayList<String>();
+        for (Tag tag : tags) {
+            tagsTitles += tag.getTitle() + " " ;
+        }
+        return new NoteView(note.getId(), note.getTitle(), note.getText(), note.getDate(), tagsTitles);
     }
     public void saveNote(NoteForm noteForm) {
         Integer userId = currentUserDetailsFacade.getUserDetails().getUserId();

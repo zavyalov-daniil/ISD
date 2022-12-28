@@ -12,7 +12,7 @@ public class Tag {
     private Integer id;
     @Column(nullable = false, unique = true, length = 55)
     private String title;
-    @ManyToMany(mappedBy = "notes")
+    @ManyToMany(mappedBy = "noteTags")
     Set<Note> tagNotes;
     public Tag(){
         tagNotes = new HashSet<Note>();
