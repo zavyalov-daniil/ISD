@@ -1,6 +1,8 @@
 package com.notes.isd.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tags")
@@ -10,9 +12,11 @@ public class Tag {
     private Integer id;
     @Column(nullable = false, unique = true, length = 55)
     private String title;
-//    @Column(nullable = false)
-//    private Integer noteId;
-
+    @ManyToMany(mappedBy = "notes")
+    Set<Note> tagNotes;
+    public Tag(){
+        tagNotes = new HashSet<Note>();
+    }
     public Integer getId() {
         return id;
     }
@@ -29,11 +33,15 @@ public class Tag {
         this.title = title;
     }
 
-//    public Integer getNoteId() {
-//        return noteId;
-//    }
-//
-//    public void setNoteId(Integer noteId) {
-//        this.noteId = noteId;
-//    }
+    public Set<Note> getTagNotes() {
+        return tagNotes;
+    }
+
+    public void setTagNotes(Set<Note> tagNotes) {
+        this.tagNotes = tagNotes;
+    }
+
+    public void addNoteToSet(Note note){
+        tagNotes.add(note);
+    }
 }

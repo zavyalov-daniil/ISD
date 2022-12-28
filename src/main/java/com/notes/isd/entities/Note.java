@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "notes")
@@ -20,7 +21,12 @@ public class Note {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(nullable = false)
     private Date date;
-
+    @ManyToMany
+    @JoinTable(
+            name = "tags",
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
+    Set<Tag> noteTags;
     public Integer getId() {
         return id;
     }
