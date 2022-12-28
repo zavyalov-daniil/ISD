@@ -1,7 +1,10 @@
 package com.notes.isd.services;
 
 import com.notes.isd.entities.Note;
+import com.notes.isd.entities.Tag;
 import com.notes.isd.forms.NoteForm;
+import com.notes.isd.forms.TagForm;
+import com.notes.isd.repositories.TagsRepository;
 import com.notes.isd.views.NoteView;
 import com.notes.isd.repositories.NotesRepository;
 import org.springframework.stereotype.Service;
@@ -12,10 +15,12 @@ import java.util.List;
 @Service
 public class NoteService {
     NotesRepository repos;
+    TagsRepository tagRepos;
     ICurrentUserDetailsFacade currentUserDetailsFacade;
 
-    public NoteService(NotesRepository repos, ICurrentUserDetailsFacade currentUserDetailsFacade) {
+    public NoteService(NotesRepository repos, TagsRepository tagRepos, ICurrentUserDetailsFacade currentUserDetailsFacade) {
         this.repos = repos;
+        this.tagRepos = tagRepos;
         this.currentUserDetailsFacade = currentUserDetailsFacade;
     }
 
@@ -42,5 +47,14 @@ public class NoteService {
     }
     public void deleteNoteById(Integer id) {
         repos.deleteById(id);
+    }
+
+    public void addTagToNote(TagForm tagForm, Integer noteId){
+        Tag tag = tagRepos.findTagByTitle(tagForm.getTitle());
+        if (tag == null){
+            tag = new Tag();
+            tag.setTitle(tagForm.getTitle());
+        }
+        tag.addNoteToSet(repos.getReferenceById(noteId));
     }
 }
