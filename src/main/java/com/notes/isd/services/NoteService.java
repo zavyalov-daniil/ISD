@@ -38,7 +38,7 @@ public class NoteService {
         String tagsTitles = "";
 //        List<String> tagsTitles = new ArrayList<String>();
         for (Tag tag : tags) {
-            tagsTitles += tag.getTitle() + " " ;
+            tagsTitles += tag.getTitle() + "\n" ;
         }
         return new NoteView(note.getId(), note.getTitle(), note.getText(), note.getDate(), tagsTitles);
     }
