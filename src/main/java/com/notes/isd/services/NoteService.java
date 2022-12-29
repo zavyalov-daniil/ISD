@@ -55,12 +55,16 @@ public class NoteService {
         repos.deleteById(id);
     }
 
-    public void addTagToNote(TagForm tagForm, Integer noteId){
+    public void addTagToNote(TagForm tagForm){
         Tag tag = tagRepos.findTagByTitle(tagForm.getTitle());
         if (tag == null){
             tag = new Tag();
             tag.setTitle(tagForm.getTitle());
         }
-        tag.addNoteToSet(repos.getReferenceById(noteId));
+        Note note = repos.getReferenceById(tagForm.getNoteId());
+        tag.addNoteToSet(note);
+        tagRepos.save(tag);
+        note.addTagToSet(tag);
+        repos.save(note);
     }
 }

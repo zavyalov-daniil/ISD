@@ -34,9 +34,10 @@ public class NotesController {
         noteService.saveNote(noteForm);
         return "redirect:/notes";
     }
-    @PostMapping("/addTag")
-    public String addTagToNote(@ModelAttribute TagForm tagForm, @ModelAttribute Integer id){
-        noteService.addTagToNote(tagForm, id);
+    @PostMapping ("/addTag")
+    public String addTagToNote(@RequestParam String title, @RequestParam Integer noteId){
+        TagForm tagForm = new TagForm(title, noteId);
+        noteService.addTagToNote(tagForm);
         return "redirect:/notes";
     }
 
