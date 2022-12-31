@@ -54,17 +54,46 @@
             <thead class="thead-dark">
             <tr>
                 <th>Title</th>
+                <th>Id</th>
                 <th>Text</th>
                 <th>Date</th>
+                <th>Tags</th>
                 <th>Delete</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="note: ${notesList}">
                 <td th:text="${note.title}">Title</td>
+                <td th:text="${note.id}">Id</td>
                 <td th:text="${note.text}">Text</td>
                 <td th:text="${note.date}">Date</td>
+                <td th:text="${note.tags}">Tags</td>
                 <td><a th:href="${'/notes/delete/'+note.id}">Delete</a></td>
+                <td>
+                    <form th:action="@{/notes/addTag}"
+                          method="post" style="max-width: 600px; margin: 0 auto;">
+                        <div class="m-3">
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Enter your tag: </label>
+                                <div class="col-8">
+                                    <input type="text" th:value="${title}" name="title"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Enter note id: </label>
+                                <div class="col-8">
+                                    <input type="text" th:value="${noteId}" name="noteId"/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary">Add tag</button>
+                            </div>
+                        </div>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

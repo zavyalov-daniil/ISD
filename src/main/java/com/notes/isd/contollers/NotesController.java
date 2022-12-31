@@ -1,6 +1,8 @@
 package com.notes.isd.contollers;
 
+import com.notes.isd.entities.Tag;
 import com.notes.isd.forms.NoteForm;
+import com.notes.isd.forms.TagForm;
 import com.notes.isd.views.NoteView;
 import com.notes.isd.services.NoteService;
 import org.springframework.stereotype.Controller;
@@ -23,12 +25,19 @@ public class NotesController {
         model.addAttribute("new_note", new NoteView());
         List<NoteView> notesList = noteService.findAllUserNotes();
         model.addAttribute("notesList", notesList);
+        model.addAttribute("new_tag", new TagForm());
         return "notes";
     }
 
     @PostMapping()
     public String addNote(@ModelAttribute NoteForm noteForm) {
         noteService.saveNote(noteForm);
+        return "redirect:/notes";
+    }
+    @PostMapping ("/addTag")
+    public String addTagToNote(@RequestParam String title, @RequestParam Integer noteId){
+        TagForm tagForm = new TagForm(title, noteId);
+        noteService.addTagToNote(tagForm);
         return "redirect:/notes";
     }
 

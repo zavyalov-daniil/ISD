@@ -2,6 +2,7 @@ package com.notes.isd.views;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.List;
 import java.util.Date;
 
 public class NoteView {
@@ -10,12 +11,15 @@ public class NoteView {
     private String text;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+//    private List<String> tags;
+    String tags;
     public NoteView(){}
-    public NoteView(Integer id, String title, String text, Date date) {
+    public NoteView(Integer id, String title, String text, Date date, String tags) {
         this.id=id;
         this.title = title;
         this.text = text;
         this.date = date;
+        this.tags = tags;
     }
 
     public String getTitle() {
@@ -48,5 +52,13 @@ public class NoteView {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }
