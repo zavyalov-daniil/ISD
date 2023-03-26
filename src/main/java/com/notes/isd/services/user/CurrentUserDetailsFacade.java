@@ -1,5 +1,7 @@
-package com.notes.isd.services;
+package com.notes.isd.services.user;
 
+import com.notes.isd.services.user.AppUserDetails;
+import com.notes.isd.services.user.ICurrentUserDetailsFacade;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 

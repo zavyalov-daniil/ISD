@@ -1,10 +1,11 @@
-package com.notes.isd.services;
+package com.notes.isd.services.note;
 
 import com.notes.isd.entities.Note;
 import com.notes.isd.entities.Tag;
 import com.notes.isd.forms.NoteForm;
 import com.notes.isd.forms.TagForm;
 import com.notes.isd.repositories.TagsRepository;
+import com.notes.isd.services.user.ICurrentUserDetailsFacade;
 import com.notes.isd.views.NoteView;
 import com.notes.isd.repositories.NotesRepository;
 import org.springframework.stereotype.Service;

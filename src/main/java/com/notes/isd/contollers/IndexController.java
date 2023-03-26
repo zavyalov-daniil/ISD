@@ -2,7 +2,7 @@ package com.notes.isd.contollers;
 
 import com.notes.isd.entities.UserAccount;
 import com.notes.isd.forms.UserForm;
-import com.notes.isd.services.AppUserDetailsService;
+import com.notes.isd.services.user.AppUserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

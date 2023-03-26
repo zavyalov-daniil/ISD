@@ -1,4 +1,4 @@
-package com.notes.isd.services;
+package com.notes.isd.services.exception.handling;
 
 
 public class CurrentExceptionKeeper {

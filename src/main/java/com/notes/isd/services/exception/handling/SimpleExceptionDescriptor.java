@@ -1,4 +1,4 @@
-package com.notes.isd.services.exception_handlers;
+package com.notes.isd.services.exception.handling;
 
 import org.springframework.stereotype.Component;
 
