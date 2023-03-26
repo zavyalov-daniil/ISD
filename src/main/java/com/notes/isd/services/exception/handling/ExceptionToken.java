@@ -1,6 +1,4 @@
-package com.notes.isd.services.exception_handlers;
-
-import org.springframework.stereotype.Component;
+package com.notes.isd.services.exception.handling;
 
 /**
  * Используется в мапе сдля соотнесения ошибки с более развёрнутым её описанием.

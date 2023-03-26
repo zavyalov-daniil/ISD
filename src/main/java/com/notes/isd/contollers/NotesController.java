@@ -1,10 +1,9 @@
 package com.notes.isd.contollers;
 
-import com.notes.isd.entities.Tag;
 import com.notes.isd.forms.NoteForm;
 import com.notes.isd.forms.TagForm;
 import com.notes.isd.views.NoteView;
-import com.notes.isd.services.NoteService;
+import com.notes.isd.services.note.NoteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

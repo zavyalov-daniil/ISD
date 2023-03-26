@@ -1,8 +1,9 @@
-package com.notes.isd.services;
+package com.notes.isd.services.user;
 
 import com.notes.isd.entities.UserAccount;
 import com.notes.isd.forms.UserForm;
 import com.notes.isd.repositories.UserAccountRepository;
+import com.notes.isd.services.user.AppUserDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
