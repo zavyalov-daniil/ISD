@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Main page</title>
+    <meta charset="ISO-8859-1">
+    <title>Notes</title>
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+
 </head>
 <body>
-<p>Hello, world!</a></p>
+<div class="container text-center">
+    <div class="title_box">
+        <h1 class="title">Welcome to Notes</h1>
+    </div>
+    <ol class="list">
+        <li class="list_element"><h3 class="buttons"><a th:href="@{/users}">List of Users</a></h3></li>
+        <li class="list_element"><h3 class="buttons"><a th:href="@{/registration}">Register</a></h3></li>
+        <li class="list_element"><h3 class="buttons"><a th:href="@{/login}">Login</a></h3></li>
+        <li class="list_element"><h3 class="buttons"><a th:href="@{/notes}">Your notes</a></h3></li>
+    </ol>
+</div>
+
 </body>
 </html>

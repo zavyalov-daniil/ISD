@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>List Users</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+    <div>
+        <form th:action="@{/notes}" th:object="${new_note}"
+              method="post" style="max-width: 600px; margin: 0 auto;">
+            <div class="m-3">
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Title: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{title}" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Text: </label>
+                    <div class="col-8">
+                        <input type="text" th:field="*{text}" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Date: </label>
+                    <div class="col-8">
+                        <input type="date" th:field="*{date}" class="form-control" required />
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Add note</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <h1>List of notes</h1>
+    </div>
+
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Title</th>
+                <th>Id</th>
+                <th>Text</th>
+                <th>Date</th>
+                <th>Tags</th>
+                <th>Delete</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="note: ${notesList}">
+                <td th:text="${note.title}">Title</td>
+                <td th:text="${note.id}">Id</td>
+                <td th:text="${note.text}">Text</td>
+                <td th:text="${note.date}">Date</td>
+                <td th:text="${note.tags}">Tags</td>
+                <td><a th:href="${'/notes/delete/'+note.id}">Delete</a></td>
+                <td>
+                    <form th:action="@{/notes/addTag}"
+                          method="post" style="max-width: 600px; margin: 0 auto;">
+                        <div class="m-3">
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Enter your tag: </label>
+                                <div class="col-8">
+                                    <input type="text" th:value="${title}" name="title"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-4 col-form-label">Enter note id: </label>
+                                <div class="col-8">
+                                    <input type="text" th:value="${noteId}" name="noteId"/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="btn btn-primary">Add tag</button>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
